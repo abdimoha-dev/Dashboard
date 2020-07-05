@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import axios from 'axios';
 import {
   Row,
   Col,
-  FormSelect,
   Card,
   CardHeader,
   CardBody,
@@ -16,42 +14,10 @@ import Chart from "../../utils/chart";
 class UsersByDevice extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      male: '',
-      female: ''
-    }
-
     this.canvasRef = React.createRef();
   }
 
   componentDidMount() {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=CMrvZp5rmoC:bqoVhX2RfG4;EVYKU2fIc6G&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
-    axios.get(proxyurl + url, {
-      auth: {
-        username: 'Super',
-        password: 'Bootyeater@69'
-      }
-    })
-      .then(res => {
-        if (res.data.dataValues) {
-          const female = res.data.dataValues[0].value
-          const male = 0
-
-   
-          this.setState({
-            male: male,
-            female: female
-          })
-        }
-        else {
-          this.setState({
-            male: 0,
-            female: 0
-          })
-
-        }
-      })
     const chartConfig = {
       type: "pie",
       data: this.props.chartData,
@@ -85,9 +51,9 @@ class UsersByDevice extends React.Component {
         <CardHeader className="border-bottom">
           <h6 className="m-0">{title}</h6>
         </CardHeader>
-        <CardBody className="d-flex py-0">
+        <CardBody className="pt-0">
           <canvas
-            height="220"
+            height="260"
             ref={this.canvasRef}
             className="blog-users-by-device m-auto"
           />
@@ -95,21 +61,7 @@ class UsersByDevice extends React.Component {
         <CardFooter className="border-top">
           <Row>
             <Col>
-              <FormSelect
-                size="sm"
-                value="last-week"
-                style={{ maxWidth: "130px" }}
-                onChange={() => { }}
-              >
-                <option value="last-week">Last Week</option>
-                <option value="today">Today</option>
-                <option value="last-month">Last Month</option>
-                <option value="last-year">Last Year</option>
-              </FormSelect>
-            </Col>
-            <Col className="text-right view-report">
-              {/* eslint-disable-next-line */}
-              <a href="#">View full report &rarr;</a>
+              Add description
             </Col>
           </Row>
         </CardFooter>
@@ -139,19 +91,19 @@ UsersByDevice.propTypes = {
 //console.log(state.male);
 
 UsersByDevice.defaultProps = {
-  title: "Daily Deaths",
+  title: "Daily Deaths Male/Female",
   chartData: {
     datasets: [
       {
         hoverBorderColor: "#ffffff",
-        data: [12, 34],
+        data: [0, 0],
         backgroundColor: [
           "rgba(0,123,255,1)",
           "rgba(0,123,255,0.7)"
         ]
       }
     ],
-    labels: ["Male", "Female"]
+    labels: ["Female", "male"]
   }
 };
 

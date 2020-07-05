@@ -16,7 +16,7 @@ class Auth extends Component {
         axios.get(proxyurl + url, {
             auth: {
                 username: 'Super',
-                password: 'Bootyeater@69'
+                password: 'Abdymohammed@123'
             }
         })
             .then(res => {

@@ -14,14 +14,15 @@ class SubCountyConfirmed extends Component {
   }
 
   componentDidMount() {
-
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+    //COVIDHIS New Confirmed Cases By sub-county
     const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY&dimension=ou:HEsM6W2ImQR;EcRytSSIkUq;E7tkGikenbD;aiqi2bz0IMI;lb5LzWiUX8Y;oMaQgNIs85x;SBz4c48i24Y;jOVcLeZQSsS;nCziQtZ49jj;xhVi71INcFs;TPRNJqSm4lK;YZAZ1a9MIvX&displayProperty=NAME'
 
     axios.get(proxyurl + url, {
       auth: {
         username: 'Super',
-        password: 'Bootyeater@69'
+        password: 'Abdymohammed@123'
       }
     })
       .then(
@@ -55,23 +56,27 @@ class SubCountyConfirmed extends Component {
               <CardHeader className="border-bottom">
                 <h6 className="m-0">Cases By Sub-county</h6>
               </CardHeader>
-              <CardBody className="p-0">
 
+              <CardBody className="pt-0">
+  
                 <table className="table mb-0">
                   <thead className="bg-light">
                     <tr>
-                      <th>
+                      <th scope="col" className="border-0">
                         Name
-                          </th>
-                      <th>
+                        </th>
+                      <th scope="col" className="border-0">
                         Total
-                          </th>
+                        </th>
                     </tr>
                   </thead>
                   <tbody>
                     {
                       this.state.items.map(item => (
-                        <tr><td >{(item.orgUnit)}</td> <td>{item.value}</td></tr>
+                        <tr key={item.orgUnit}>
+                          <td>{(item.orgUnit)}</td>
+                          <td>{parseFloat(item.value)}</td>
+                        </tr>
                       ))}
 
                   </tbody>

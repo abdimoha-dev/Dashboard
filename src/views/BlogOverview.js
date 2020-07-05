@@ -4,13 +4,14 @@ import { Container, Row, Col } from "shards-react";
 
 import PageTitle from "./../components/common/PageTitle";
 import SmallStats from "./../components/common/SmallStats";
-import UsersByDevice from "./../components/blog/UsersByDevice";
 import CovidTest from "../components/covidhis/CovidTest";
 import CovidDeaths from "../components/covidhis/CovidDeaths";
 import Recovered from "../components/covidhis/Recovered";
 import ConfirmedCases from "../components/covidhis/ConfirmedCases"
 import SubCountyConfirmed from "../components/covidhis/SubCountyConfirmed";
 import ConfirmedLast7Days from "../components/covidhis/ConfirmedLast7Days";
+import MaleFemaleDeath from "../components/covidhis/MaleFemaleDeath";
+import DaillyDeaths from "../components/covidhis/DaillyDeaths";
 const BlogOverview = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
     {/* Page Header */}
@@ -40,25 +41,24 @@ const BlogOverview = ({ smallStats }) => (
     <Row>
       {/* Users Overview */}
       <Col lg="8" md="12" sm="12" className="mb-4">
-      <ConfirmedLast7Days/>
-      
+        <ConfirmedLast7Days />
+
       </Col>
 
-      {/* Users by Device */}
-      <Col lg="4" md="6" sm="12" className="mb-4">
-        <UsersByDevice />
+      {/* Male Female */}
+      <Col lg="4" md="6" sm="9" className="mb-4">
+        <MaleFemaleDeath />
       </Col>
-      {/* Top Referrals */}
-      
-      <Col lg="3" md="12" sm="12" className="mb-4">
-      
-      <SubCountyConfirmed/>
-      
-      </Col>
-     
-     
 
     </Row>
+    <Row>
+      <Col lg="6" md="12" sm="12" className="mb-4">
+        <SubCountyConfirmed />
+      </Col>
+      <Col lg="6" md="12" sm="12" className="mb-4">
+      <DaillyDeaths />
+    </Col>
+      </Row>
   </Container>
 );
 
@@ -67,15 +67,15 @@ BlogOverview.propTypes = {
    * The small stats dataset.
    */
   smallStats: PropTypes.array
-  
+
 };
 //const [count, setCount] = useState(0);
 BlogOverview.defaultProps = {
-  
+
   smallStats: [
     {
       label: "Total Tests",
-      value: <CovidTest/>,
+      value: <CovidTest />,
       percentage: "-4.7%",
       increase: true,
       chartLabels: [null, null, null, 1],
@@ -93,7 +93,7 @@ BlogOverview.defaultProps = {
     },
     {
       label: "New Deaths",
-      value: <CovidDeaths/>,
+      value: <CovidDeaths />,
       percentage: "12.4",
       increase: true,
       chartLabels: [null, null, null, null, null, null, null],
@@ -111,7 +111,7 @@ BlogOverview.defaultProps = {
     },
     {
       label: "Recovered",
-      value: <Recovered/>,
+      value: <Recovered />,
       percentage: "3.8%",
       increase: false,
       decrease: true,
@@ -130,7 +130,7 @@ BlogOverview.defaultProps = {
     },
     {
       label: "Confirmed Cases",
-      value: <ConfirmedCases/>,
+      value: <ConfirmedCases />,
       percentage: "2.71%",
       increase: false,
       decrease: true,

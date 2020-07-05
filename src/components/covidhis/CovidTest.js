@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { isObject } from 'highcharts';
-
 class CovidTest extends Component {
     constructor() {
         super()
@@ -17,7 +15,7 @@ class CovidTest extends Component {
         axios.get(proxyurl + url, {
             auth: {
                 username: 'Super',
-                password: 'Bootyeater@69'
+                password: 'Abdymohammed@123'
             }
         })
             .then(res => {

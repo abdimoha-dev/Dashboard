@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Row, Col, Card, CardHeader, CardBody, Button } from "shards-react";
-import RangeDatePicker from "../common/RangeDatePicker";
+import { Row, Card, CardHeader, CardBody, CardFooter, Col } from "shards-react";
 import Chart from "../../utils/chart";
 
 class UsersOverview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: []
-    }
+    // this.state = {
+    //   data: []
+    // }
 
     this.canvasRef = React.createRef();
   }
@@ -34,7 +33,7 @@ class UsersOverview extends React.Component {
         scales: {
           xAxes: [
             {
-              gridLines: false,
+              gridLines: true,
               ticks: {
                 callback(tick, index) {
                   // Jump every 7 values on the X axis labels to avoid clutter.
@@ -60,7 +59,7 @@ class UsersOverview extends React.Component {
         },
         hover: {
           mode: "nearest",
-          intersect: false
+          intersect: true
         },
         tooltips: {
           custom: false,
@@ -97,25 +96,19 @@ class UsersOverview extends React.Component {
           <h6 className="m-0">{title}</h6>
         </CardHeader>
         <CardBody className="pt-0">
-          <Row className="border-bottom py-2 bg-light">
-            <Col sm="6" className="d-flex mb-2 mb-sm-0">
-              <RangeDatePicker />
-            </Col>
-            <Col>
-              <Button
-                size="sm"
-                className="d-flex btn-white ml-auto mr-auto ml-sm-auto mr-sm-0 mt-3 mt-sm-0"
-              >
-                View Full Report &rarr;
-              </Button>
-            </Col>
-          </Row>
           <canvas
             height="120"
             ref={this.canvasRef}
             style={{ maxWidth: "100% !important" }}
           />
         </CardBody>
+        <CardFooter className="border-top">
+          <Row>
+            <Col>
+              Add description
+          </Col>
+          </Row>
+        </CardFooter>
       </Card>
     );
   }
@@ -137,7 +130,7 @@ UsersOverview.propTypes = {
 };
 
 UsersOverview.defaultProps = {
-  title: "Daily New Cases",
+  title: "Daily New Casess",
   chartData: {
     labels: Array.from(new Array(1000), (_, i) => (i === 0 ? 1 : i)),
     datasets: [
@@ -151,7 +144,7 @@ UsersOverview.defaultProps = {
           "180.0",
           "240.0",
           "320.0",
- 
+
         ],
         backgroundColor: "rgba(0,123,255,0.1)",
         borderColor: "rgba(0,123,255,1)",
@@ -161,51 +154,6 @@ UsersOverview.defaultProps = {
         pointRadius: 0,
         pointHoverRadius: 3
       },
-      {
-        label: "Past Month",
-        fill: "start",
-        data: [
-          380,
-          430,
-          120,
-          230,
-          410,
-          740,
-          472,
-          219,
-          391,
-          229,
-          400,
-          203,
-          301,
-          380,
-          291,
-          620,
-          700,
-          300,
-          630,
-          402,
-          320,
-          380,
-          289,
-          410,
-          300,
-          530,
-          630,
-          720,
-          780,
-          1200
-        ],
-        backgroundColor: "rgba(255,65,105,0.1)",
-        borderColor: "rgba(255,65,105,1)",
-        pointBackgroundColor: "#ffffff",
-        pointHoverBackgroundColor: "rgba(255,65,105,1)",
-        borderDash: [3, 3],
-        borderWidth: 1,
-        pointRadius: 0,
-        pointHoverRadius: 2,
-        pointBorderColor: "rgba(255,65,105,1)"
-      }
     ]
   }
 };

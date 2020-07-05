@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import axios from 'axios';
-import UsersOverview from '../blog/UsersOverview';
+import axios from 'axios'
+import UsersOverview from '../blog/UsersOverview'
 
-class ConfirmedLast7Days extends Component {
+class DaillyDeaths extends Component {
     constructor() {
         super()
         this.state = {
-            title: "Daily New Cases",
+            title: "Daily Deaths",
             chartData: {
 
                 labels: ["1", "2", "3", "4", "5", "6"],
@@ -25,10 +25,8 @@ class ConfirmedLast7Days extends Component {
         const dataValue = []
         const dataLabels = []
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
-
-        //COVIDHIS New Confirmed Cases last 7 Days
-        const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
-
+        //COVIDHIS Dailly Deaths
+        const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
 
         axios.get(proxyurl + url, {
             auth: {
@@ -36,26 +34,35 @@ class ConfirmedLast7Days extends Component {
                 password: 'Abdymohammed@123'
             }
         }).then(res => {
+
             res.data.dataValues.map(vals => {
                 dataValue.push(vals.value)
                 dataLabels.push(vals.period)
             })
 
-            this.setState(prevState => {
-                prevState.chartData.datasets[0].data = dataValue
-                prevState.chartData.labels = dataLabels
 
+
+            this.setState(prevState => {
+                // prevState.chartData.datasets[0].data = dataValue
+                // prevState.chartData.labels = dataLabels
+                let chartData = Object.assign({}, prevState.chartData);
+                this.state.chartData.datasets[0].data = dataValue
+                this.state.chartData.labels = dataLabels
 
             })
+            console.log(this.state.chartData.datasets[0].data);
+
         }
 
         )
     }
     render() {
-        console.log("What the fuck Men")
+
         return (
-            <UsersOverview chartData={this.state.chartData} title={this.state.title}/>
+            <div>
+                <UsersOverview chartData={this.state.chartData} title={this.state.title} />
+            </div>
         )
     }
 }
-export default ConfirmedLast7Days
+export default DaillyDeaths
