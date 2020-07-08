@@ -13,7 +13,7 @@ class MaleFemaleDeath extends Component {
                 datasets: [
                     {
                         hoverBorderColor: "#ffffff",
-                        data: [5,5],
+                        data: [1,1],
                         backgroundColor: [
                             "rgba(0,123,255,1)",
                             "rgba(0,123,255,0.8)"

@@ -10,7 +10,6 @@ class DaillyDeaths extends Component {
             chartData: {
 
                 labels: ["1", "2", "3", "4", "5", "6"],
-                //["20200627", "20200628", "20200629", "20200630"],
                 datasets: [
                     {
                         label: "Last 7 Days",
@@ -43,14 +42,11 @@ class DaillyDeaths extends Component {
 
 
             this.setState(prevState => {
-                // prevState.chartData.datasets[0].data = dataValue
-                // prevState.chartData.labels = dataLabels
                 let chartData = Object.assign({}, prevState.chartData);
                 this.state.chartData.datasets[0].data = dataValue
                 this.state.chartData.labels = dataLabels
 
             })
-            console.log(this.state.chartData.datasets[0].data);
 
         }
 
