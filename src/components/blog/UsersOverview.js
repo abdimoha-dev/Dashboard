@@ -19,10 +19,12 @@ class UsersOverview extends React.Component {
       ...{
         responsive: true,
         legend: {
+          display: true,
           position: "top"
         },
         elements: {
           line: {
+            
             // A higher value makes the line look skewed at this ratio.
             tension: 0.3
           },
@@ -62,9 +64,9 @@ class UsersOverview extends React.Component {
           intersect: true
         },
         tooltips: {
-          custom: false,
+          custom: true,
           mode: "nearest",
-          intersect: false
+          intersect: true
         }
       },
       ...this.props.chartOptions

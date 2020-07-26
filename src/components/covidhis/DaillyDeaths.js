@@ -14,7 +14,8 @@ class DaillyDeaths extends Component {
                     {
                         label: "Last 7 Days",
                         fill: "start",
-                        data: ["0", "0", "0", "0", "0", "0", "0"]
+                        data: ["0", "0", "0", "0", "0", "0", "0"],
+                        hidden:true
                     }]
             },
 
@@ -25,7 +26,7 @@ class DaillyDeaths extends Component {
         const dataLabels = []
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         //COVIDHIS Dailly Deaths
-        const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
+        const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
 
         axios.get(proxyurl + url, {
             auth: {
@@ -42,9 +43,9 @@ class DaillyDeaths extends Component {
 
 
             this.setState(prevState => {
-                let chartData = Object.assign({}, prevState.chartData);
-                this.state.chartData.datasets[0].data = dataValue
-                this.state.chartData.labels = dataLabels
+                //let chartData = Object.assign({}, prevState.chartData);
+                prevState.chartData.datasets[0].data = dataValue
+                prevState.chartData.labels = dataLabels
 
             })
 

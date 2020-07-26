@@ -30,7 +30,8 @@ class MaleFemaleDeath extends Component {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
         //COVIDHIS Deaths Male/Female
-        const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=CMrvZp5rmoC:bqoVhX2RfG4;EVYKU2fIc6G&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
+        const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=CMrvZp5rmoC:bqoVhX2RfG4;EVYKU2fIc6G&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
+        
         axios.get(proxyurl + url, {
             auth: {
                 username: 'Super',
@@ -38,6 +39,8 @@ class MaleFemaleDeath extends Component {
             }
         })
             .then(res => {
+                console.log("... loading");
+                
                 var genderData = []
                 if (res.data.dataValues) {
 

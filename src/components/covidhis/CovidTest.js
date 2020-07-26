@@ -4,14 +4,16 @@ class CovidTest extends Component {
     constructor() {
         super()
         this.state = {
-            user: {},
-            allData: []
+            allData: [],
+            percentage: 0,
+            increase: false,
         }
     }
 
     componentDidMount() {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:qjhxv6tdE7x&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
+        //COVIDHIS Total Tested
+        const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:qjhxv6tdE7x&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
         axios.get(proxyurl + url, {
             auth: {
                 username: 'Super',
@@ -19,14 +21,17 @@ class CovidTest extends Component {
             }
         })
             .then(res => {
-                if(res.data.dataValues){
-                    this.setState({
-                    allData: parseFloat(res.data.dataValues[0].value)
-                })
-                   
+                if (res.data.dataValues) {
+                    console.log(res.data.dataValues);
                     
+          
+                    this.setState({
+                        allData: parseFloat(res.data.dataValues[0].value)
+                    })
+
+
                 }
-                else{
+                else {
                     this.setState({
                         allData: 0
                     })

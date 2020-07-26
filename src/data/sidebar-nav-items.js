@@ -7,9 +7,9 @@ export default function() {
       htmlAfter: ""
     },
     {
-      title: "Contact Tracing",
+      title: "Predictive Analysis",
       htmlBefore: '<i class="material-icons"></i>',
-      to: "/contact-tracing",
+      to: "/predictive Analysis",
     },
 
     {
@@ -18,7 +18,7 @@ export default function() {
       to: "/components-overview",
     },
     {
-      title: "Tables",
+      title: "Maps",
       htmlBefore: '<i class="material-icons"></i>',
       to: "/tables",
     },

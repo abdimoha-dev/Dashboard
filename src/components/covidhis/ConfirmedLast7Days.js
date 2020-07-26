@@ -10,12 +10,12 @@ class ConfirmedLast7Days extends Component {
             chartData: {
 
                 labels: ["1", "2", "3", "4", "5", "6"],
-                //["20200627", "20200628", "20200629", "20200630"],
                 datasets: [
                     {
                         label: "Last 7 Days",
-                        fill: "start",
-                        data: ["0", "0", "0", "0", "0", "0", "0"]
+                        //fill: "start",
+                        data: ["0", "0", "0", "0", "0", "0", "0"],
+                        hidden: true
                     }]
             },
 
@@ -27,7 +27,7 @@ class ConfirmedLast7Days extends Component {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
         //COVIDHIS New Confirmed Cases last 7 Days
-        const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
+        const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
 
 
         axios.get(proxyurl + url, {
@@ -43,6 +43,7 @@ class ConfirmedLast7Days extends Component {
 
             this.setState(prevState => {
                 prevState.chartData.datasets[0].data = dataValue
+                //prevState.chartData.datasets[0].hidden=false
                 prevState.chartData.labels = dataLabels
 
 
@@ -52,7 +53,6 @@ class ConfirmedLast7Days extends Component {
         )
     }
     render() {
-        console.log("What the fuck Men")
         return (
             <UsersOverview chartData={this.state.chartData} title={this.state.title}/>
         )

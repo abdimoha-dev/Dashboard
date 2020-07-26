@@ -12,7 +12,7 @@ class Recovered extends Component {
 
     componentDidMount() {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:PkGdfHQyWWH;IscKKNJXRR6&dimension=pe:TODAY&dimension=ou:HfVjCurKxh2&displayProperty=NAME'
+        const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:PkGdfHQyWWH;IscKKNJXRR6&dimension=pe:TODAY&dimension=ou:HfVjCurKxh2&displayProperty=NAME'
         axios.get(proxyurl + url, {
             auth: {
                 username: 'Super',

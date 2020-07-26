@@ -9,15 +9,17 @@ class SubCountyConfirmed extends Component {
     super(props)
     this.state = {
       error: null,
-      items: []
+      items: [],
+      orgNames: []
     }
   }
 
   componentDidMount() {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const orgUnitUrl = 'http://35.194.15.145:8080/api/33/organisationUnits.json?filter=level:eq:3&fields=id,name,level,parent&paging=false'
 
     //COVIDHIS New Confirmed Cases By sub-county
-    const url = 'http://35.225.118.120:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY&dimension=ou:HEsM6W2ImQR;EcRytSSIkUq;E7tkGikenbD;aiqi2bz0IMI;lb5LzWiUX8Y;oMaQgNIs85x;SBz4c48i24Y;jOVcLeZQSsS;nCziQtZ49jj;xhVi71INcFs;TPRNJqSm4lK;YZAZ1a9MIvX&displayProperty=NAME'
+    const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY&dimension=ou:HEsM6W2ImQR;EcRytSSIkUq;E7tkGikenbD;aiqi2bz0IMI;lb5LzWiUX8Y;oMaQgNIs85x;SBz4c48i24Y;jOVcLeZQSsS;nCziQtZ49jj;xhVi71INcFs;TPRNJqSm4lK;YZAZ1a9MIvX&displayProperty=NAME'
 
     axios.get(proxyurl + url, {
       auth: {
@@ -33,6 +35,31 @@ class SubCountyConfirmed extends Component {
             })
           }
           else {
+            //get organization units
+            axios.get(proxyurl + orgUnitUrl, {
+              auth: {
+                username: 'Super',
+                password: 'Abdymohammed@123'
+              }
+            })
+            .then(response => {
+              console.log(response.data.organisationUnits);
+
+              this.setState({
+                orgNames: response.data.organisationUnits
+              })
+
+
+            })
+            console.log(this.state.orgNames);
+
+
+            // var data = res.data.dataValues
+            // data.map(row => {
+
+            // })
+
+
             this.setState({
               items: res.data.dataValues
             });
@@ -47,8 +74,6 @@ class SubCountyConfirmed extends Component {
     return (
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
-
-
         {/* Default Light Table */}
         <Row>
           <Col>
@@ -58,7 +83,7 @@ class SubCountyConfirmed extends Component {
               </CardHeader>
 
               <CardBody className="pt-0">
-  
+
                 <table className="table mb-0">
                   <thead className="bg-light">
                     <tr>
@@ -73,7 +98,9 @@ class SubCountyConfirmed extends Component {
                   <tbody>
                     {
                       this.state.items.map(item => (
+                        // if(item.orgUnit === )
                         <tr key={item.orgUnit}>
+
                           <td>{(item.orgUnit)}</td>
                           <td>{parseFloat(item.value)}</td>
                         </tr>
@@ -93,111 +120,3 @@ class SubCountyConfirmed extends Component {
 }
 
 export default SubCountyConfirmed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if (res.data.dataValues) {
-//   const thika = []
-//   const juja = []
-//   const githunguri = []
-//   const gatunduS = []
-//   const gatunduN = []
-//   const ruiru = []
-//   const orgUnits = []
-//   res.data.dataValues.map((dt) => {
-
-//     orgUnits.push({"name" : 'moha'})
-//     console.log(orgUnits)
-//     if (dt.orgUnit === 'YZAZ1a9MIvX') {
-
-//       thika.push(dt.value)
-
-//     }
-//     if (dt.orgUnit === 'aiqi2bz0IMI') {
-
-//       juja.push(dt.value)
-
-//     }
-//     if (dt.orgUnit === 'E7tkGikenbD') {
-
-//       githunguri.push(dt.value)
-
-//     }
-
-//     if (dt.orgUnit === 'EcRytSSIkUq') {
-
-//       gatunduS.push(dt.value)
-
-//     }
-
-//     if (dt.orgUnit === 'HEsM6W2ImQR') {
-
-//       gatunduN.push(dt.value)
-
-//     }
-
-//     if (dt.orgUnit === 'TPRNJqSm4lK') {
-
-//       ruiru.push(dt.value)
-
-//     }
-
-//     //console.log(thika);
-
-
-//   })
-//   if (thika[1] = '0') {
-//     thika[1] = 0
-//   }
-//   if (ruiru[1] = '0') {
-//     ruiru[1] = 0
-//   }
-//   if (juja[1] = '0') {
-//     juja[1] = 0
-//   }
-//   if (githunguri[1] = '0') {
-//     githunguri[1] = 0
-//   }
-//   //console.log(thika)
-
-//   const totalThika = parseFloat(thika[0]) + parseFloat(thika[1])
-//   const totalJuja = parseFloat(juja[0]) + parseFloat(juja[1])
-//   const totalGithunguri = parseFloat(githunguri[0]) + parseFloat(githunguri[1])
-//   const totalGatunduN = parseFloat(gatunduN[0]) + parseFloat(gatunduN[1])
-//   const totalRuiru = parseFloat(ruiru[0]) + parseFloat(ruiru[1])
-
-
-//   this.setState({
-//     thika: totalThika,
-//     juja: totalJuja,
-//     githunguri: totalGithunguri,
-//     gatunduN: totalGatunduN,
-//     ruiru: totalRuiru,
-
-//   })
-
-
-// }
-// else {
-//   this.setState({
-//     thika: 0,
-//     juja: 0,
-//     githunguri: 0,
-//     gatunduN: 0,
-//     ruiru: 0,
-
-//   })
-// }

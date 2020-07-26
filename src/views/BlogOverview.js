@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
@@ -12,55 +11,65 @@ import SubCountyConfirmed from "../components/covidhis/SubCountyConfirmed";
 import ConfirmedLast7Days from "../components/covidhis/ConfirmedLast7Days";
 import MaleFemaleDeath from "../components/covidhis/MaleFemaleDeath";
 import DaillyDeaths from "../components/covidhis/DaillyDeaths";
-const BlogOverview = ({ smallStats }) => (
-  <Container fluid className="main-content-container px-4">
-    {/* Page Header */}
-    <Row noGutters className="page-header py-4">
-      <PageTitle title="Dashboard Overview" subtitle="Dashboard" className="text-sm-left mb-3" />
-    </Row>
 
-    {/* Small Stats Blocks */}
-    <Row>
-      {smallStats.map((stats, idx) => (
-        <Col className="col-lg mb-4" key={idx} {...stats.attrs}>
-          <SmallStats
-            id={`small-stats-${idx}`}
-            variation="1"
-            chartData={stats.datasets}
-            chartLabels={stats.chartLabels}
-            label={stats.label}
-            value={stats.value}
-            percentage={stats.percentage}
-            increase={stats.increase}
-            decrease={stats.decrease}
-          />
-        </Col>
-      ))}
-    </Row>
+import React, { Component } from 'react'
 
-    <Row>
-      {/* Users Overview */}
-      <Col lg="8" md="12" sm="12" className="mb-4">
-        <ConfirmedLast7Days />
+class BlogOverview extends Component {
+ 
 
-      </Col>
-
-      {/* Male Female */}
-      <Col lg="4" md="6" sm="9" className="mb-4">
-        <MaleFemaleDeath />
-      </Col>
-
-    </Row>
-    <Row>
-      <Col lg="6" md="12" sm="12" className="mb-4">
-        <SubCountyConfirmed />
-      </Col>
-      <Col lg="6" md="12" sm="12" className="mb-4">
-      <DaillyDeaths />
-    </Col>
+  render() {
+    return (
+      <Container fluid className="main-content-container px-4">
+      {/* Page Header */}
+      <Row noGutters className="page-header py-4">
+        <PageTitle title="Dashboard Overview" subtitle="Dashboard" className="text-sm-left mb-3" />
       </Row>
-  </Container>
-);
+  
+      {/* Small Stats Blocks */}
+      <Row>
+        {this.props.smallStats.map((stats, idx) => (
+          <Col className="col-lg mb-4" key={idx} {...stats.attrs}>
+            <SmallStats
+              id={`small-stats-${idx}`}
+              variation="1"
+              chartData={stats.datasets}
+              chartLabels={stats.chartLabels}
+              label={stats.label}
+              value={stats.value}
+              percentage={stats.percentage}
+              increase={stats.increase}
+              decrease={stats.decrease}
+            />
+          </Col>
+        ))}
+      </Row>
+  
+      <Row>
+        {/* Users Overview */}
+        <Col lg="8" md="12" sm="12" className="mb-4">
+          <ConfirmedLast7Days />
+  
+        </Col>
+  
+        {/* Male Female */}
+        <Col lg="4" md="6" sm="9" className="mb-4">
+          <MaleFemaleDeath />
+        </Col>
+  
+      </Row>
+      <Row>
+        <Col lg="6" md="12" sm="12" className="mb-4">
+          <SubCountyConfirmed />
+        </Col>
+        <Col lg="6" md="12" sm="12" className="mb-4">
+        <DaillyDeaths />
+      </Col>
+        </Row>
+    </Container>
+    )
+  }
+}
+
 
 BlogOverview.propTypes = {
   /**
@@ -71,6 +80,7 @@ BlogOverview.propTypes = {
 };
 //const [count, setCount] = useState(0);
 BlogOverview.defaultProps = {
+  
 
   smallStats: [
     {
