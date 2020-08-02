@@ -39,8 +39,7 @@ class MaleFemaleDeath extends Component {
             }
         })
             .then(res => {
-                console.log("... loading");
-                
+               
                 var genderData = []
                 if (res.data.dataValues) {
 

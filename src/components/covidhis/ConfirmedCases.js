@@ -11,7 +11,11 @@ class ConfirmedCases extends Component {
     }
 
     componentDidMount() {
+        {/**
+         TODO: API to include recovered, tested, deaths and confirmed cases together
+        */}
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        //COVIDHIS total Confirmed Cases
         const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:ocBlGrHZy6Q;XX87aQO48lt&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
         axios.get(proxyurl + url, {
             auth: {

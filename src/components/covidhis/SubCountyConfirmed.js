@@ -58,8 +58,7 @@ class SubCountyConfirmed extends Component {
                   return allData
                 })
 
-                console.log(data);
-
+  
 
                 this.setState({
                   items: data

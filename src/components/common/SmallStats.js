@@ -80,6 +80,7 @@ class SmallStats extends React.Component {
   }
 
   render() {
+    //destructuring props
     const { variation, label, value, percentage, increase } = this.props;
 
     const cardClasses = classNames(
