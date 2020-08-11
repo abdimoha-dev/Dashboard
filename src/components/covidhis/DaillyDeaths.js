@@ -38,6 +38,7 @@ class DaillyDeaths extends Component {
             res.data.dataValues.map(vals => {
                 dataValue.push(vals.value)
                 dataLabels.push(vals.period)
+                return 0
             })
 
 

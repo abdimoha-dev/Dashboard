@@ -39,6 +39,8 @@ class ConfirmedLast7Days extends Component {
             res.data.dataValues.map(vals => {
                 dataValue.push(vals.value)
                 dataLabels.push(vals.period)
+                
+                return 0;
             })
 
             this.setState(prevState => {
