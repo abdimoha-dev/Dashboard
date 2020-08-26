@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Card, CardHeader, CardBody } from "shards-react";
+import {Row, Col, Card, CardHeader, CardBody } from "shards-react";
 
 
 import axios from 'axios';
@@ -54,6 +54,7 @@ class SubCountyConfirmed extends Component {
                       allData.id = ous.id
 
                     }
+                    return allData;
                   })
                   return allData
                 })
