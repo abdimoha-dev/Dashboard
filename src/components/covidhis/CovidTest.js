@@ -22,9 +22,7 @@ class CovidTest extends Component {
         })
             .then(res => {
                 if (res.data.dataValues) {
-                    console.log(res.data.dataValues);
                     
-          
                     this.setState({
                         allData: parseFloat(res.data.dataValues[0].value)
                     })
