@@ -1,59 +1,36 @@
-import React, { Component } from "react";
+import React from "react";
 
-function UserGreeting(props) {
-  if (!props.warn) {
-    return null;
+const Test = () => {
+  var elements = ["hydrogen", "Helium", "Lithium", "Beryl"];
+  function runners() {
+    return ["s", "o", "chi"];
   }
-  return <h1>Welcome Back!</h1>;
-}
-function GuestGreeting(props) {
+  var [k, b, c] = runners();
+  console.log(k);
+  console.log(b);
+  console.log(c);
+
+  var [a, b, c, d, e] = ["Table", "Chair", "Fan", "Rug"];
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  console.log(d);
+  console.log(e);
+
+  const person = (id, e) => {
+    let age = id;
+
+    setInterval(function growUp() {
+      age++;
+      console.log(age);
+    }, 1000);
+  };
+  elements.map(({ length: lenghtFooBar }) => lenghtFooBar);
   return (
     <div>
-      <h1>Please sign in.</h1> <button onClick={props.handles}>Toggle</button>
+      <button onClick={(e) => person(1, e)}>Click Me</button>
     </div>
   );
-}
-class Test extends Component {
-  constructor() {
-    super();
-    this.state = { isLoggedIn: true };
-    /*
-    If you forget to bind this.handleClick and pass it to onClick,
-     this will be undefined when the function is actually called.
-     */
-  }
-  handleLogin = () => {
-    this.setState({
-      isLoggedIn: true,
-    });
-  };
-
-  handleLogout = () => {
-    this.setState({ isLoggedIn: !this.state.isLoggedIn });
-  };
-
-  render() {
-    const isLoggedIn = this.state.isLoggedIn;
-
-    // const loginSTatus = isLoggedIn ? (
-    //   <UserGreeting />
-    // ) : (
-    //   <GuestGreeting handles={this.handleLogin} />
-    // );
-
-    return (
-      <div>
-        <UserGreeting warn={this.state.isLoggedIn} />
-        <h1>Hello!</h1>
-        {isLoggedIn && <h2>yoh!!</h2>}
-      </div>
-    );
-
-    // if (isLoggedIn) {
-    //   return <UserGreeting />;
-    // }
-    // return <GuestGreeting handles={this.handleLogin} />;
-  }
-}
+};
 
 export default Test;
