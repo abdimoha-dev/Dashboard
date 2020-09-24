@@ -23,11 +23,6 @@ export default [
     component: BlogOverview
   },
   {
-    path: "/errors",
-    layout: DefaultLayout,
-    component: Errors
-  },
-  {
     path: "/components-overview",
     layout: DefaultLayout,
     component: ComponentsOverview

@@ -11,21 +11,15 @@ export default function() {
       htmlBefore: '<i class="material-icons"></i>',
       to: "/predictive Analysis",
     },
-
     {
-      title: "Forms & Components",
-      htmlBefore: '<i class="material-icons"></i>',
-      to: "/components-overview",
-    },
-    {
-      title: "Maps",
+      title: "Maps and Tables",
       htmlBefore: '<i class="material-icons"></i>',
       to: "/tables",
     },
-    {
-      title: "FAQ",
-      htmlBefore: '<i class="material-icons"></i>',
-      to: "/errors",
-    }
+    // {
+    //   title: "FAQ",
+    //   htmlBefore: '<i class="material-icons"></i>',
+    //   to: "/errors",
+    // }
   ];
 }
