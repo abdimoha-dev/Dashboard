@@ -27,10 +27,10 @@ class MaleFemaleDeath extends Component {
 
     componentDidMount() {
 
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        const proxyurl = "";
 
         //COVIDHIS Deaths Male/Female
-        const url = 'http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=CMrvZp5rmoC:bqoVhX2RfG4;EVYKU2fIc6G&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
+        const url = 'http://localhost:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=CMrvZp5rmoC:bqoVhX2RfG4;EVYKU2fIc6G&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME'
         
         axios.get(proxyurl + url, {
             auth: {

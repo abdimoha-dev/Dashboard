@@ -4,7 +4,7 @@ import { init } from "d2";
 
 const Test = () => {
     const ds = init({
-        baseUrl: "http://35.194.15.145:8080/api/33/analytics/dataValueSet.json?dimension=dx:qjhxv6tdE7x&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME",
+        baseUrl: "http://localhost:8080/api/33/analytics/dataValueSet.json?dimension=dx:qjhxv6tdE7x&dimension=pe:TODAY&dimension=ou:qKzosKQPl6G&displayProperty=NAME",
         headers: { authorization: `Basic ${btoa("Super:Abdymohammed@123")}` },
     }).then((d2) => {
         console.log(d2);

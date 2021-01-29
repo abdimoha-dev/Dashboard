@@ -15,10 +15,10 @@ class OrgUnits extends Component {
             .then(([res1, res2]) => Promise.all(
                 [res1.json(), res2.json()]
             ))
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        const proxyurl = "";
 
         //Organization units level 3
-        const url = 'http://35.194.15.145:8080/api/33/organisationUnits.json?filter=level:eq:3&fields=id,name,level,parent&paging=false'
+        const url = 'http://localhost:8080/api/33/organisationUnits.json?filter=level:eq:3&fields=id,name,level,parent&paging=false'
 
         // axios.get(proxyurl + url, {
         //     auth: {
