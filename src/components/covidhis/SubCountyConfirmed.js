@@ -23,13 +23,13 @@ class SubCountyConfirmed extends Component {
   }
 
   componentDidMount() {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const proxyurl = "";
     const orgUnitUrl =
-      "http://35.194.15.145:8080/api/33/organisationUnits.json?filter=level:eq:3&fields=id,name,level,parent&paging=false";
+      "http://localhost:8080/api/33/organisationUnits.json?filter=level:eq:3&fields=id,name,level,parent&paging=false";
 
     //COVIDHIS New Confirmed Cases By sub-county
     const url =
-      "http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY&dimension=ou:HEsM6W2ImQR;EcRytSSIkUq;E7tkGikenbD;aiqi2bz0IMI;lb5LzWiUX8Y;oMaQgNIs85x;SBz4c48i24Y;jOVcLeZQSsS;nCziQtZ49jj;xhVi71INcFs;TPRNJqSm4lK;YZAZ1a9MIvX&displayProperty=NAME";
+      "http://localhost:8080/api/29/analytics/dataValueSet.json?dimension=dx:pldGAvXW7a7&dimension=pe:TODAY&dimension=ou:HEsM6W2ImQR;EcRytSSIkUq;E7tkGikenbD;aiqi2bz0IMI;lb5LzWiUX8Y;oMaQgNIs85x;SBz4c48i24Y;jOVcLeZQSsS;nCziQtZ49jj;xhVi71INcFs;TPRNJqSm4lK;YZAZ1a9MIvX&displayProperty=NAME";
 
     axios
       .get(proxyurl + url, {

@@ -23,10 +23,10 @@ class DaillyDeaths extends Component {
   componentDidMount() {
     const dataValue = [];
     const dataLabels = [];
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const proxyurl = "";
     //COVIDHIS Dailly Deaths
     const url =
-      "http://35.194.15.145:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME";
+      "http://localhost:8080/api/29/analytics/dataValueSet.json?dimension=dx:FlLa6bYz9aH&dimension=pe:TODAY;LAST_7_DAYS&dimension=ou:qKzosKQPl6G&displayProperty=NAME";
 
     axios
       .get(proxyurl + url, {
